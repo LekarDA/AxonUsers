@@ -26,6 +26,7 @@ class MainActivity : CoroutineAppCompatActivity(), OnUserClickListener, ListPres
         App.component.injectActivity(this)
         initList()
         launch { adapter.setData(presenter.getData()) }
+        Log.e("test","test git config")
     }
 
     private fun initList() {
