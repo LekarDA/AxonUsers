@@ -4,12 +4,11 @@ import android.os.Parcel
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 
-class Coordinates(parcel: Parcel) :Parcelable{
+class Coordinates() :Parcelable{
     @SerializedName("latitude") var latitude: String? = null
     @SerializedName("longitude") var longitude: String? = null
 
-
-    init {
+    constructor(parcel: Parcel) : this() {
         latitude = parcel.readString()
         longitude = parcel.readString()
     }
@@ -32,4 +31,5 @@ class Coordinates(parcel: Parcel) :Parcelable{
             return arrayOfNulls(size)
         }
     }
+
 }

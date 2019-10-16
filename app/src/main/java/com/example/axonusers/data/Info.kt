@@ -4,13 +4,13 @@ import android.os.Parcel
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 
-class Info(parcel: Parcel) :Parcelable{
+class Info() :Parcelable{
     @SerializedName("seed")    var seed: String? = null
     @SerializedName("results") var results: Int = 0
     @SerializedName("page")    var page: Int = 0
     @SerializedName("version") var version: String? = null
 
-    init {
+    constructor(parcel: Parcel) : this() {
         seed = parcel.readString()
         results = parcel.readInt()
         page = parcel.readInt()
@@ -37,4 +37,6 @@ class Info(parcel: Parcel) :Parcelable{
             return arrayOfNulls(size)
         }
     }
+
+
 }

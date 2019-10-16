@@ -2,26 +2,23 @@ package com.example.axonusers.data
 
 import android.os.Parcel
 import android.os.Parcelable
+import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
+import org.jetbrains.annotations.Nullable
+import java.lang.Exception
+import java.lang.NumberFormatException
 
 
-class Id(parcel: Parcel) :Parcelable {
+class Id() :Parcelable {
 
-    @SerializedName("name")  var name: String? = null
-    @SerializedName("value") var value: String? = null
 
-    init {
+    @SerializedName("name")  var name: String? = "test"
+    @SerializedName("value") var value: String? = "test"
+
+
+    constructor(parcel: Parcel) : this() {
         name = parcel.readString()
         value = parcel.readString()
-    }
-
-    override fun writeToParcel(parcel: Parcel, flags: Int) {
-        parcel.writeString(name)
-        parcel.writeString(value)
-    }
-
-    override fun describeContents(): Int {
-        return 0
     }
 
     companion object CREATOR : Parcelable.Creator<Id> {
@@ -34,4 +31,12 @@ class Id(parcel: Parcel) :Parcelable {
         }
     }
 
+    override fun writeToParcel(parcel: Parcel?, p1: Int) {
+        parcel?.writeString(name)
+        parcel?.writeString(value)
+    }
+
+    override fun describeContents(): Int {
+        return 0
+    }
 }

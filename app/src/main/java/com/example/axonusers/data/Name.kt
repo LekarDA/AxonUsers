@@ -4,12 +4,12 @@ import android.os.Parcel
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 
-class Name(parcel: Parcel) : Parcelable {
+class Name() : Parcelable {
     @SerializedName("title") var title: String? = null
     @SerializedName("first") var first: String? = null
     @SerializedName("last")  var last: String? = null
 
-    init {
+    constructor(parcel: Parcel) : this() {
         title = parcel.readString()
         first = parcel.readString()
         last = parcel.readString()
@@ -34,4 +34,5 @@ class Name(parcel: Parcel) : Parcelable {
             return arrayOfNulls(size)
         }
     }
+
 }

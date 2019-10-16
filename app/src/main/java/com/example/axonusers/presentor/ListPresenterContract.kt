@@ -4,6 +4,7 @@ import com.example.axonusers.data.Results
 
 interface ListPresenterContract {
     interface ListPresenter{
+
         suspend fun getData():List<Results>
 
         fun onViewDestroy()

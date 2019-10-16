@@ -4,7 +4,7 @@ import android.os.Parcel
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 
-class Results(parcel: Parcel) :Parcelable{
+class Results() :Parcelable{
     @SerializedName("gender")   var gender: String? = null
     @SerializedName("name")     var name: Name? = null
     @SerializedName("location") var location: Location? = null
@@ -18,8 +18,7 @@ class Results(parcel: Parcel) :Parcelable{
     @SerializedName("picture")  var picture: Pictures? = null
     @SerializedName("nat")      var nat: String? = null
 
-
-    init {
+    constructor(parcel: Parcel) : this() {
         gender = parcel.readString()
         name = parcel.readParcelable(Name::class.java.classLoader)
         location = parcel.readParcelable(Location::class.java.classLoader)
@@ -40,8 +39,8 @@ class Results(parcel: Parcel) :Parcelable{
         parcel.writeParcelable(location, flags)
         parcel.writeString(email)
         parcel.writeParcelable(login, flags)
-        parcel.writeParcelable(dob,flags)
-        parcel.writeParcelable(registered,flags)
+        parcel.writeParcelable(dob, flags)
+        parcel.writeParcelable(registered, flags)
         parcel.writeString(phone)
         parcel.writeString(cell)
         parcel.writeParcelable(id, flags)

@@ -4,18 +4,16 @@ import android.os.Parcel
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 
-class Pictures(parcel: Parcel) :Parcelable{
+class Pictures() :Parcelable{
     @SerializedName("large")     var large: String? = null
     @SerializedName("medium")    var medium: String? = null
     @SerializedName("thumbnail") var thumbnail: String? = null
 
-
-    init {
+    constructor(parcel: Parcel) : this() {
         large = parcel.readString()
         medium = parcel.readString()
         thumbnail = parcel.readString()
     }
-
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeString(large)
@@ -36,4 +34,5 @@ class Pictures(parcel: Parcel) :Parcelable{
             return arrayOfNulls(size)
         }
     }
+
 }

@@ -4,30 +4,30 @@ import android.os.Parcel
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 
-class Location(parcel: Parcel) :Parcelable{
+class Location() :Parcelable{
     @SerializedName("street")       var street: String? = null
     @SerializedName("city")         var city: String? = null
     @SerializedName("state")        var state: String? = null
-    @SerializedName("postcode")     var postcode: Int = 0
+    @SerializedName("postcode")     var postcode: String? = null
     @SerializedName("coordinates")  var coordinates: Coordinates? = null
     @SerializedName("timezone")     var timezone:Timezone? = null
 
-    init {
+    constructor(parcel: Parcel) : this() {
         street = parcel.readString()
         city = parcel.readString()
         state = parcel.readString()
-        postcode = parcel.readInt()
+        postcode = parcel.readString()
         coordinates = parcel.readParcelable(Coordinates::class.java.classLoader)
-        timezone  = parcel.readParcelable(Timezone::class.java.classLoader)
+        timezone = parcel.readParcelable(Timezone::class.java.classLoader)
     }
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeString(street)
         parcel.writeString(city)
         parcel.writeString(state)
-        parcel.writeInt(postcode)
-        parcel.writeParcelable(coordinates,flags)
-        parcel.writeParcelable(timezone,flags)
+        parcel.writeString(postcode)
+        parcel.writeParcelable(coordinates, flags)
+        parcel.writeParcelable(timezone, flags)
     }
 
     override fun describeContents(): Int {
@@ -43,4 +43,5 @@ class Location(parcel: Parcel) :Parcelable{
             return arrayOfNulls(size)
         }
     }
+
 }

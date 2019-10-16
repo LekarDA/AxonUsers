@@ -4,11 +4,11 @@ import android.os.Parcel
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 
-class Timezone(parcel: Parcel) : Parcelable {
+class Timezone() : Parcelable {
     @SerializedName("offset")      var offset: String? = null
     @SerializedName("description") var description: String? = null
 
-    init {
+    constructor(parcel: Parcel) : this() {
         offset = parcel.readString()
         description = parcel.readString()
     }
@@ -31,4 +31,5 @@ class Timezone(parcel: Parcel) : Parcelable {
             return arrayOfNulls(size)
         }
     }
+
 }

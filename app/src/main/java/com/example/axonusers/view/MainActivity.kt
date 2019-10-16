@@ -1,6 +1,7 @@
 package com.example.axonusers.view
 
 import android.os.Bundle
+import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.axonusers.App
 import com.example.axonusers.R
@@ -17,6 +18,7 @@ class MainActivity : CoroutineAppCompatActivity(), OnUserClickListener, ListPres
 
     @Inject
     lateinit var presenter: ListPresenterContract.ListPresenter
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,6 +37,5 @@ class MainActivity : CoroutineAppCompatActivity(), OnUserClickListener, ListPres
     }
 
     override fun onUserClick(position: Int) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 }

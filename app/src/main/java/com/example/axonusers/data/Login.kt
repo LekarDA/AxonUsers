@@ -4,7 +4,7 @@ import android.os.Parcel
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 
-class Login(parcel: Parcel) :Parcelable{
+class Login() :Parcelable{
     @SerializedName("uuid")     var uuid: String? = null
     @SerializedName("username") var username: String? = null
     @SerializedName("password") var password: String? = null
@@ -13,7 +13,7 @@ class Login(parcel: Parcel) :Parcelable{
     @SerializedName("sha1")     var sha1: String? = null
     @SerializedName("sha256")   var sha256: String? = null
 
-    init {
+    constructor(parcel: Parcel) : this() {
         uuid = parcel.readString()
         username = parcel.readString()
         password = parcel.readString()
@@ -46,4 +46,6 @@ class Login(parcel: Parcel) :Parcelable{
             return arrayOfNulls(size)
         }
     }
+
+
 }

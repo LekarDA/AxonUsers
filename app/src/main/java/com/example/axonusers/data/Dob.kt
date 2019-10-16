@@ -4,15 +4,14 @@ import android.os.Parcel
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 
-class Dob(parcel: Parcel) :Parcelable{
+class Dob() :Parcelable{
     @SerializedName("date") var date: String? = null
     @SerializedName("age") var age: Int = 0
 
-    init {
+    constructor(parcel: Parcel) : this() {
         date = parcel.readString()
         age = parcel.readInt()
     }
-
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeString(date)
@@ -32,4 +31,6 @@ class Dob(parcel: Parcel) :Parcelable{
             return arrayOfNulls(size)
         }
     }
+
+
 }

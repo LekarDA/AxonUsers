@@ -4,17 +4,15 @@ import android.os.Parcel
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 
-class User(parcel: Parcel) :Parcelable {
-    @SerializedName("results")  var results: List<Results>? = null
+class User() :Parcelable {
+    @SerializedName("results")  var results: ArrayList<Results>? = null
     @SerializedName("info")     var info: Info? = null
 
-    init {
-        results = arrayListOf<Results>().apply { parcel.readList(this, Results::class.java.classLoader) }
+    constructor(parcel: Parcel) : this() {
         info = parcel.readParcelable(Info::class.java.classLoader)
     }
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
-        parcel.writeList(results)
         parcel.writeParcelable(info, flags)
     }
 
@@ -31,5 +29,4 @@ class User(parcel: Parcel) :Parcelable {
             return arrayOfNulls(size)
         }
     }
-
 }
